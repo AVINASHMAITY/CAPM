@@ -1,0 +1,61 @@
+@baseUrl = http://localhost:4004
+
+GET {{baseUrl}}/admin
+
+###------------
+GET {{baseUrl}}/admin/$metadata
+
+###------------
+
+GET {{baseUrl}}/admin/Books?$expand=publcountry,price_currency
+Accept-Language: in
+
+###------------
+
+GET {{baseUrl}}/admin/Books
+
+###------------
+
+GET {{baseUrl}}/admin/Authors
+
+
+###-------------
+POST {{baseUrl}}/admin/Authors
+Content-Type: application/json
+
+{
+ "name" : "Arbaz",
+ "dateOfBirth": "2001-06-03",
+ "dateOfDeath": "2055-10-01",
+ "epoch": {"ID" : 120} 
+}
+
+###--------------
+POST {{baseUrl}}/admin/Books
+Content-Type: application/json
+
+{
+    "title" : "Abc",
+    "author_ID": "ce160dae-ff19-4c84-84c5-bb193277cbe0",
+    "genre"    : 2
+}
+
+###--------------
+# @name getShakespeare
+GET {{baseUrl}}/admin/Authors?$filter=name eq 'William Shakespeare'
+
+@authorID = {{getShakespeare.response.body.$.value[0].ID}}
+
+###-------------
+
+PUT {{baseUrl}}/admin/Books
+Content-Type: application/json
+
+{
+    "title" : "ab",
+    "author_ID" : {{authorID}}
+}
+
+
+
+

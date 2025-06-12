@@ -1,0 +1,40 @@
+@baseUrl = http://localhost:4004
+
+
+
+
+###--------
+POST {{baseUrl}}/admin/Authors
+Content-Type: application/json
+
+{
+    "name" : "Initial Ve",
+    "dateOfBirth" : "2000-02-09",
+    "dateOfDeath" : "2001-03-10"
+}
+
+###
+# @name createNewAuthor
+
+GET {{baseUrl}}/admin/Authors?$filter=name eq 'William Shakespeare'
+
+@authorID = {{createNewAuthor.response.body.$.value[0].ID}}
+
+###
+
+GET {{baseUrl}}/admin/Authors({{authorID}})
+
+###------------
+@Etag = {{createNewAuthor.request.headers.Etag}}
+###-----------
+PUT {{baseUrl}}/admin/Authors({{authorID}})
+If-Match: ({{Etag}})
+Content-Type: application/json
+
+{
+    "name" : "Update 1 of Initial Version",
+    "dateOfBirth" : "2000-05-09",
+    "dateOfDeath" : "2005-05-10"
+}
+
+ 

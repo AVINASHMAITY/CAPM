@@ -1,0 +1,15 @@
+@baseUrl = http://localhost:4004
+
+GET {{baseUrl}}/cat/Authors
+
+###------------------
+POST {{baseUrl}}/cat/Authors
+Content-Type: application/json
+
+{
+  "name" : "another",
+  "dateOfBirth" : "2000-10-08",
+  "dateOfDeath" : "2050-09-10",
+  "epoch" : {"ID" : 110}
+}
+

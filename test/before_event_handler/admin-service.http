@@ -1,0 +1,24 @@
+@baseUrl = http://localhost:4004
+
+###--------
+POST {{baseUrl}}/admin/Authors
+Content-Type: application/json
+
+{
+  "name" : "samrat",
+  "dateOfBirth" : "2000-10-08",
+  "dateOfDeath" : "1990-09-10",
+  "epoch" : {"ID" : 110}
+}
+# 05083ca6-6d26-482f-a7ff-025e33856b11
+###---------
+
+GET {{baseUrl}}/admin/$metadata
+
+###-----------
+
+GET {{baseUrl}}/admin/Authors
+
+###-----------
+GET {{baseUrl}}/admin/Books
+

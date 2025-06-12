@@ -1,0 +1,46 @@
+{
+  "name": "Helloworld",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@sap/cds": "^8",
+    "express": "^4",
+    "hana": "^0.0.2"
+    
+  },
+  "devDependencies": {
+    "@cap-js/cds-types": "^0.10.0",
+    "@cap-js/sqlite": "^1",
+    "@sap/cds-dk": "^8"
+  },
+  "cds": {
+    "requires": {
+      "db": {
+        "[development]": {
+          "kind": "sqlite",
+          "credentials": {
+            "url": "db/Helloworld.sqlite"
+          }
+        }
+      },
+      "[production]": {
+        "auth": "xsuaa",
+        "db": {
+          "kind": "hana"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "watch-customer": "cds watch --open customer/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-catalog": "cds watch --open catalog/webapp/index.html?sap-ui-xx-viewCache=false"
+  },
+  "sapux": [
+    "app/customer",
+    "app/catalog"
+  ]
+}
