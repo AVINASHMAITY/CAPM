@@ -6,10 +6,10 @@
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
+    "@cap-js/attachments": "^2.2.0",
     "@sap/cds": "^8",
     "express": "^4",
     "hana": "^0.0.2"
-    
   },
   "devDependencies": {
     "@cap-js/cds-types": "^0.10.0",

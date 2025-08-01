@@ -1,6 +1,7 @@
 namespace com.sap.learning;
 
 using { cuid, managed , Currency, Country, sap.common.CodeList } from '@sap/cds/common';
+using { Attachments } from '@cap-js/attachments';
 
 
 entity Books : cuid,managed {
@@ -26,6 +27,8 @@ type Price {
     currency : Currency;
 }
 
+
+
 @odata.draft.enabled
 entity Author: cuid, managed {
         name        : String(100) @mandatory;
@@ -35,6 +38,7 @@ entity Author: cuid, managed {
         book        : Composition of Many Books On book.author = $self;
         bookPrice   : Price;
         progressChart : Integer;
+        attachments: Composition of many Attachments;
 }
 
 entity Epochs : CodeList {
@@ -49,6 +53,3 @@ annotate Author with {
 annotate Books with {
     modifiedAt @odata.etag;
 };
-
-
-
